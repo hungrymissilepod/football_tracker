@@ -7,11 +7,10 @@ import 'package:football_tracker/services/http_service.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:http/http.dart' as http;
 
-import '../misc/mocks.dart';
-import '../misc/stubs.dart';
+import '../mocks_and_stubs/mocks.dart';
+import '../mocks_and_stubs/stubs.dart';
 
 void main() {
-
 
   group('FootballDataService: ', () {
 
@@ -24,9 +23,9 @@ void main() {
       final HttpServiceMock httpServiceMock = locator<HttpService>() as HttpServiceMock;
 
       /// Mock all http calls to return stubs
-      when(() => httpServiceMock.get(captureAny(that: startsWith(ApiUrls.baseUrl + ApiUrls.competitionEndpoint)))).thenAnswer((invocation) => Future<http.Response>.value(http.Response(competitionDataStub, 200)));
-      when(() => httpServiceMock.get(captureAny(that: startsWith(ApiUrls.baseUrl + ApiUrls.matchesEndpoint)))).thenAnswer((invocation) => Future<http.Response>.value(http.Response(matchDataStub, 200)));
-      when(() => httpServiceMock.get(captureAny(that: startsWith(ApiUrls.baseUrl + ApiUrls.teamEndpoint)))).thenAnswer((invocation) => Future<http.Response>.value(http.Response(teamDataStub, 200)));
+      when(() => httpServiceMock.get(captureAny(that: startsWith(ApiUrls.baseUrl + ApiUrls.competitionEndpoint)))).thenAnswer((invocation) => Future<http.Response>.value(http.Response(competitionStub, 200)));
+      when(() => httpServiceMock.get(captureAny(that: startsWith(ApiUrls.baseUrl + ApiUrls.matchesEndpoint)))).thenAnswer((invocation) => Future<http.Response>.value(http.Response(matchesStub, 200)));
+      when(() => httpServiceMock.get(captureAny(that: startsWith(ApiUrls.baseUrl + ApiUrls.teamEndpoint)))).thenAnswer((invocation) => Future<http.Response>.value(http.Response(teamStub, 200)));
 
       Team? team = await service.fetchData();
 

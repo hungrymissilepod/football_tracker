@@ -13,7 +13,7 @@ class Season extends Equatable {
 
   factory Season.fromMap(Map<String, dynamic> map) {
     return Season(
-      id: map['id'] as int,
+      id: map['id'],
       startDate: DateTime.parse(map['startDate']),
       endDate: DateTime.parse(map['endDate']),
     );

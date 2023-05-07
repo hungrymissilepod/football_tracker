@@ -28,7 +28,14 @@ class MostWinsCalculator {
     }
     
     /// Get the team with the most [gamesWon]
-    final Team bestTeam = teams.reduce((value, element) => value.gamesWon > element.gamesWon ? value : element);
-    return bestTeam.id;
-  } 
+    int mostWins = 0;
+    int bestTeamId = 0;
+    for (int i = 0; i < teams.length; i++) {
+      if (teams[i].gamesWon > mostWins) {
+        mostWins = teams[i].gamesWon;
+        bestTeamId = teams[i].id;
+      }
+    }
+    return bestTeamId;
+  }
 }

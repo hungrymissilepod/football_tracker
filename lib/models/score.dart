@@ -9,7 +9,7 @@ class Score extends Equatable {
 
   factory Score.fromMap(Map<String, dynamic> map) {
     return Score(
-      winner: map['winner'] as String?,
+      winner: map['winner'],
     );
   }
   

@@ -15,10 +15,9 @@ class Match extends Equatable {
   final Team awayTeam;
   final Score score;
 
-
   factory Match.fromMap(Map<String, dynamic> map) {
     return Match(
-      id: map['id'] as int,
+      id: map['id'],
       homeTeam: Team.fromMap(map['homeTeam']),
       awayTeam: Team.fromMap(map['awayTeam']),
       score: Score.fromMap(map['score']),
@@ -26,5 +25,5 @@ class Match extends Equatable {
   }
   
   @override
-  List<Object?> get props => <Object?>[id, homeTeam, awayTeam];
+  List<Object?> get props => <Object?>[id, homeTeam, awayTeam, score];
 }

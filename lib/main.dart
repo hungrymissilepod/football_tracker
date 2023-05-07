@@ -6,7 +6,6 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<void> main() async {
-
   await dotenv.load(fileName: '.env');
   await setupLocator();
   runApp(const MyApp());
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Football Tracker',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

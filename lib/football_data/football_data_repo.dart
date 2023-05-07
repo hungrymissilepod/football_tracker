@@ -10,7 +10,6 @@ class FootballDataRepo {
 
   Future<Team?> fetchBestTeam() async {
     bestTeam = await _footballDataService.fetchData();
-    print('bestTeam is: ${bestTeam?.name}');
     return bestTeam;
   }
 }
