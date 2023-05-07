@@ -17,5 +17,12 @@ void main() {
       final Score score = Score.fromMap(json.decode('{}'));
       expect(score.winner, isNull);
     });
+
+    test('Testing props of Score object', () {
+      const Score score = Score(
+        winner: 'HOME_TEAM',
+      );
+      expect(score.props, <Object?>[score.winner]);
+    });
   });
 }

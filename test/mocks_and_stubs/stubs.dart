@@ -133,7 +133,7 @@ String competitionStub =
   "currentSeason": {
     "id": 1490,
     "startDate": "2022-08-05",
-    "endDate": "2023-05-28"
+    "endDate": "2024-10-28"
   }
 }
 ''';

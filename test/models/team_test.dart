@@ -24,5 +24,13 @@ void main() {
       expect(team.venue, 'Old Trafford');
       expect(team.gamesWon, 0);
     });
+
+    test('Testing props of Team object', () {
+      final Team team = Team(
+        id: 66,
+        name: 'Manchester United FC',
+      );
+      expect(team.props, <Object?>[team.id, team.name, team.crest, team.founded, team.venue, team.gamesWon]);
+    });
   });
 }
