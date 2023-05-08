@@ -11,69 +11,71 @@ class BestTeamView extends ViewModelWidget<HomeScreenViewModel> {
 
   @override
   Widget build(BuildContext context, HomeScreenViewModel viewModel) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      color: Colors.white,
-      child: Column(
-        children: <Widget>[
-          Image(
-            image: NetworkImage(viewModel.bestTeam?.crest ?? ''),
-            loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
-              if (loadingProgress == null) { return child; }
-              return const CircularProgressIndicator(
-                color: CustomColors.premierLeaguePurple,
-              );
-            },
-            height: 140,
-          ),
-          const DefaultSpacer(),
-          Text(
-            '${viewModel.bestTeam?.name}',
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-          const DefaultSpacer(),
-          Text(
-            'Games won in last 30 days:',
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-          const SizedBox(height: 10),
-          Text(
-            '${viewModel.bestTeam?.gamesWon}',
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-          const DefaultSpacer(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              HeadingAndSubheading(
-                heading: 'Founded:',
-                subHeading: '${viewModel.bestTeam?.founded}'
-              ),
-              HeadingAndSubheading(
-                heading: 'Stadium:',
-                subHeading: '${viewModel.bestTeam?.venue}'
-              ),
-              HeadingAndSubheading(
-                heading: 'Coach:',
-                subHeading: '${viewModel.bestTeam?.coach?.name}'
-              ),
-            ],
-          ),
-          const DefaultSpacer(),
-          const Divider(
-            color: CustomColors.premierLeaguePurple,
-            thickness: 0.5,
-          ),
-          const DefaultSpacer(),
-          Text(
-            'Squad:',
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-          const DefaultSpacer(),
-          SqaudListView(players: viewModel.bestTeam?.players),
-        ],
+    return SafeArea(
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        color: Colors.white,
+        child: Column(
+          children: <Widget>[
+            Image(
+              image: NetworkImage(viewModel.bestTeam?.crest ?? ''),
+              loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                if (loadingProgress == null) { return child; }
+                return const CircularProgressIndicator(
+                  color: CustomColors.premierLeaguePurple,
+                );
+              },
+              height: 140,
+            ),
+            const DefaultSpacer(),
+            Text(
+              '${viewModel.bestTeam?.name}',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            const DefaultSpacer(),
+            Text(
+              'Games won in last 30 days:',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            const SizedBox(height: 10),
+            Text(
+              '${viewModel.bestTeam?.gamesWon}',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            const DefaultSpacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                HeadingAndSubheading(
+                  heading: 'Founded:',
+                  subHeading: '${viewModel.bestTeam?.founded}'
+                ),
+                HeadingAndSubheading(
+                  heading: 'Stadium:',
+                  subHeading: '${viewModel.bestTeam?.venue}'
+                ),
+                HeadingAndSubheading(
+                  heading: 'Coach:',
+                  subHeading: '${viewModel.bestTeam?.coach?.name}'
+                ),
+              ],
+            ),
+            const DefaultSpacer(),
+            const Divider(
+              color: CustomColors.premierLeaguePurple,
+              thickness: 0.5,
+            ),
+            const DefaultSpacer(),
+            Text(
+              'Squad:',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            const DefaultSpacer(),
+            SqaudListView(players: viewModel.bestTeam?.players),
+          ],
+        ),
       ),
     );
   }

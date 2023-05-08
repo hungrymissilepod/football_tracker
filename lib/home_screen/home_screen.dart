@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:football_tracker/home_screen/home_screen_view_model.dart';
+import 'package:football_tracker/home_screen/ui/banner_image.dart';
 import 'package:football_tracker/home_screen/ui/best_team_view.dart';
 import 'package:football_tracker/home_screen/ui/error_state.dart';
 import 'package:football_tracker/home_screen/ui/loading_state.dart';
@@ -22,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
       onViewModelReady: (HomeScreenViewModel viewModel) => viewModel.init(),
       builder: (BuildContext context, HomeScreenViewModel viewModel, Widget? child) {
         return Scaffold(
-          backgroundColor: CustomColors.premierLeaguePurple,
+          backgroundColor: Colors.white,
           appBar: AppBar(
             backgroundColor: CustomColors.premierLeaguePurple,
             elevation: 0,
@@ -34,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
           body: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                const Image(image: AssetImage('assets/banner.jpeg')),
+                const BannerImage(),
                 viewModel.isBusy ? const LoadingState()
                 : viewModel.hasError ? const ErrorState()
                 : const BestTeamView(),

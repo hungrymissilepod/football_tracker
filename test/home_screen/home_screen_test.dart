@@ -28,7 +28,7 @@ void main() {
     );
 
     final Scaffold scaffold = tester.firstWidget(find.byType(Scaffold).first);
-    expect(scaffold.backgroundColor, CustomColors.premierLeaguePurple);
+    expect(scaffold.backgroundColor, Colors.white);
 
     final AppBar appBar = tester.firstWidget(find.byType(AppBar).first);
     expect(appBar.backgroundColor, CustomColors.premierLeaguePurple);
