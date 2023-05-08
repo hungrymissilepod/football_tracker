@@ -33,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           body: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
             child: Column(
               children: <Widget>[
                 const BannerImage(),
