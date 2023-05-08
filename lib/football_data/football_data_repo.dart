@@ -6,7 +6,7 @@ class FootballDataRepo {
 
   final FootballDataService _footballDataService = locator<FootballDataService>();
 
-  late final Team? bestTeam;
+  Team? bestTeam;
 
   Future<Team?> fetchBestTeam() async {
     bestTeam = await _footballDataService.fetchData();

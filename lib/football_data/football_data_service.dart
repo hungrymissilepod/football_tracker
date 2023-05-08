@@ -17,12 +17,19 @@ class FootballDataService {
   Future<Team?> fetchData() async {
     final DateTime endDate = await _fetchCompetitionEndDate();
 
+    /// Calculate the [dateFrom] and [dateTo] period
     final String dateFrom = endDate.add(const Duration(days: -30)).toFormattedString();
     final String dateTo = endDate.toFormattedString();
 
-    final int bestTeamId = await _fetchBestTeamId(dateFrom, dateTo);
-
-    return await _fetchBestTeamData(bestTeamId);
+    /// Calculate which team has won the most games over the last 30 days
+    final Team teamWithMostWins = await _calculateTeamWithMostWins(dateFrom, dateTo);
+    
+    /// Fetch all team data for the best team
+    final Team? bestTeam = await _fetchTeamData(teamWithMostWins.id);
+    
+    /// We need to assign [gamesWon] here because we calculated it earler on [teamWithMostWins]
+    bestTeam?.gamesWon = teamWithMostWins.gamesWon;
+    return bestTeam;
   }
 
   /// Fetches the latest competition data for the Premier League.
@@ -44,10 +51,9 @@ class FootballDataService {
     }
   }
 
-
   /// Fetches all competition data between [dateFrom] and [dateTo] and calculates
   /// the team with the most wins during this period.
-  Future<int> _fetchBestTeamId(String dateFrom, String dateTo) async {
+  Future<Team> _calculateTeamWithMostWins(String dateFrom, String dateTo) async {
     final http.Response response = await _httpService.get('${ApiUrls.baseUrl}${ApiUrls.matchesEndpoint}?dateFrom=$dateFrom&dateTo=$dateTo');
     if (response.statusCode == 200) {
       Map<String, dynamic> data = json.decode(response.body);
@@ -59,7 +65,7 @@ class FootballDataService {
   }
 
   /// Fetches team data for a team with [id].
-  Future<Team?> _fetchBestTeamData(int id) async {
+  Future<Team?> _fetchTeamData(int id) async {
     final http.Response response = await _httpService.get('${ApiUrls.baseUrl}${ApiUrls.teamEndpoint}/$id');
     if (response.statusCode == 200) {
       Map<String, dynamic> data = json.decode(response.body);

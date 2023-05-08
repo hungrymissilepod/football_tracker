@@ -7,7 +7,7 @@ class HomeScreenViewModel extends BaseViewModel {
   
   final FootballDataRepo _footballDataRepo = locator<FootballDataRepo>();
 
-  late final Team? bestTeam;
+  Team? bestTeam;
 
   Future<void> init() async {
     bestTeam = await runBusyFuture(_footballDataRepo.fetchBestTeam());

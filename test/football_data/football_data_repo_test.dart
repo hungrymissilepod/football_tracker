@@ -15,11 +15,6 @@ void main() {
       locator.registerSingleton<FootballDataService>(FootballDataServiceMock());
     });
     
-    test('Trying to access bestTeam before it is initialised will throw a LateInitializationError', () async {
-      final FootballDataRepo repo = FootballDataRepo();
-      expect(() => repo.bestTeam, throwsA(isA<Error>()));
-    });
-
     test('Calling fetchBestTeam returns a Team object', () async {
       final FootballDataRepo repo = FootballDataRepo();
       final FootballDataServiceMock footballDataServiceMock = locator<FootballDataService>() as FootballDataServiceMock;

@@ -5,11 +5,10 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i3;
 import 'package:flutter/material.dart';
 import 'package:football_tracker/home_screen/home_screen.dart' as _i2;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i4;
+import 'package:stacked_services/stacked_services.dart' as _i3;
 
 class Routes {
   static const homeScreen = '/';
@@ -27,9 +26,8 @@ class StackedRouter extends _i1.RouterBase {
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeScreen: (data) {
-      final args = data.getArgs<HomeScreenArguments>(nullOk: false);
       return MaterialPageRoute<dynamic>(
-        builder: (context) => _i2.HomeScreen(key: args.key, title: args.title),
+        builder: (context) => const _i2.HomeScreen(),
         settings: data,
       );
     }
@@ -41,51 +39,15 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-class HomeScreenArguments {
-  const HomeScreenArguments({
-    this.key,
-    required this.title,
-  });
-
-  final _i3.Key? key;
-
-  final String title;
-
-  @override
-  String toString() {
-    return '{"key": "$key", "title": "$title"}';
-  }
-}
-
-extension NavigatorStateExtension on _i4.NavigationService {
-  Future<dynamic> navigateToHomeScreen({
-    _i3.Key? key,
-    required String title,
+extension NavigatorStateExtension on _i3.NavigationService {
+  Future<dynamic> navigateToHomeScreen([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  }) async {
+  ]) async {
     return navigateTo<dynamic>(Routes.homeScreen,
-        arguments: HomeScreenArguments(key: key, title: title),
-        id: routerId,
-        preventDuplicates: preventDuplicates,
-        parameters: parameters,
-        transition: transition);
-  }
-
-  Future<dynamic> replaceWithHomeScreen({
-    _i3.Key? key,
-    required String title,
-    int? routerId,
-    bool preventDuplicates = true,
-    Map<String, String>? parameters,
-    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
-        transition,
-  }) async {
-    return replaceWith<dynamic>(Routes.homeScreen,
-        arguments: HomeScreenArguments(key: key, title: title),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

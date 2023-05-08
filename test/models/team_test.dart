@@ -30,7 +30,7 @@ void main() {
         id: 66,
         name: 'Manchester United FC',
       );
-      expect(team.props, <Object?>[team.id, team.name, team.crest, team.founded, team.venue, team.gamesWon]);
+      expect(team.props, <Object?>[team.id, team.name, team.crest, team.founded, team.venue, team.coach, team.players]);
     });
   });
 }

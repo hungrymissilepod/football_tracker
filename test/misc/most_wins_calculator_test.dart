@@ -53,8 +53,8 @@ void main() {
           ),
         ),
       ];
-      final teamId = MostWinsCalculator().calculateTeamWithMostWins(matches);
-      expect(teamId, 66);
+      final Team team = MostWinsCalculator().calculateTeamWithMostWins(matches);
+      expect(team.id, 66);
     });
 
     test('When multiple teams have the highest number of wins, calculateTeamWithMostWins will return the team that is closest to the start of the list', () {
@@ -102,8 +102,8 @@ void main() {
           ),
         ),
       ];
-      final teamId = MostWinsCalculator().calculateTeamWithMostWins(matches);
-      expect(teamId, 66);
+      final Team team = MostWinsCalculator().calculateTeamWithMostWins(matches);
+      expect(team.id, 66);
     });
   });
 }

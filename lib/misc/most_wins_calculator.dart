@@ -6,7 +6,7 @@ class MostWinsCalculator {
   static const String homeTeam = 'HOME_TEAM';
   static const String awayTeam = 'AWAY_TEAM';
 
-  int calculateTeamWithMostWins(List<Match> matches) {
+  Team calculateTeamWithMostWins(List<Match> matches) {
     List<Team> teams = <Team>[];
     for (Match m in matches) {
       /// Add the home and away teams if they are not already in [_teams] list
@@ -29,13 +29,13 @@ class MostWinsCalculator {
     
     /// Get the team with the most [gamesWon]
     int mostWins = 0;
-    int bestTeamId = 0;
+    int bestTeamIndex = 0;
     for (int i = 0; i < teams.length; i++) {
       if (teams[i].gamesWon > mostWins) {
         mostWins = teams[i].gamesWon;
-        bestTeamId = teams[i].id;
+        bestTeamIndex = i;
       }
     }
-    return bestTeamId;
+    return teams[bestTeamIndex];
   }
 }

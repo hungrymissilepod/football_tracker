@@ -1,3 +1,10 @@
+String coachStub =
+'''
+{
+  "name": "Jake"
+}
+''';
+
 String matchStub =
 '''
 {
@@ -78,6 +85,14 @@ String matchesStub =
 			}
 		}
 	]
+}
+''';
+
+String playerStub =
+'''
+{
+  "name": "Bob",
+  "position": "Goalkeeper"
 }
 ''';
 
