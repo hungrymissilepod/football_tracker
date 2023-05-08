@@ -19,7 +19,10 @@ void main() {
   });
 
   testWidgets('Check UI of ErrorState', (WidgetTester tester) async {
-    final HomeScreenViewModel viewModel = HomeScreenViewModel();
+    /// Mock the repo to return a [Team] object
+    final FootballDataRepoMock footballDataRepoMock = locator<FootballDataRepo>() as FootballDataRepoMock;
+    when(() => footballDataRepoMock.fetchBestTeam()).thenAnswer((invocation) => Future<Team?>.value(Team(id: 66, name: 'Manchester United FC')));
+    
     await tester.pumpWidget(
       MaterialApp(
         theme: ThemeData(
@@ -32,7 +35,7 @@ void main() {
           ),
         ),
         home: ViewModelBuilder.reactive(
-          viewModelBuilder: () => viewModel,
+          viewModelBuilder: () => HomeScreenViewModel(),
           builder: (BuildContext context, HomeScreenViewModel viewModel, Widget? child) {
             return const ErrorState();
           },
@@ -42,10 +45,6 @@ void main() {
 
     expect(find.byType(DefaultSpacer), findsNWidgets(2));
     expect(find.text('Failed to load data'), findsOneWidget);
-
-    /// Mock the repo to return a [Team] object
-    final FootballDataRepoMock footballDataRepoMock = locator<FootballDataRepo>() as FootballDataRepoMock;
-    when(() => footballDataRepoMock.fetchBestTeam()).thenAnswer((invocation) => Future<Team?>.value(Team(id: 66, name: 'Manchester United FC')));
 
     /// Tap the 'Retry' button
     await tester.tap(find.byType(TextButton));

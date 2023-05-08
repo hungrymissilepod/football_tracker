@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2023-05-08 02:19:24</td>
+            <td class="headerValue">2023-05-08 13:17:36</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -65,30 +65,30 @@
 <a name="3"><span class="lineNum">       3 </span>            : import 'package:football_tracker/misc/custom_colors.dart';</a>
 <a name="4"><span class="lineNum">       4 </span>            : </a>
 <a name="5"><span class="lineNum">       5 </span>            : class LoadingState extends StatelessWidget {</a>
-<a name="6"><span class="lineNum">       6 </span><span class="lineCov">          1 :   const LoadingState({Key? key}) : super(key: key);</span></a>
+<a name="6"><span class="lineNum">       6 </span><span class="lineCov">         15 :   const LoadingState({Key? key}) : super(key: key);</span></a>
 <a name="7"><span class="lineNum">       7 </span>            : </a>
-<a name="8"><span class="lineNum">       8 </span><span class="lineCov">          1 :   @override</span></a>
+<a name="8"><span class="lineNum">       8 </span><span class="lineCov">          2 :   @override</span></a>
 <a name="9"><span class="lineNum">       9 </span>            :   Widget build(BuildContext context) {</a>
-<a name="10"><span class="lineNum">      10 </span><span class="lineCov">          2 :     final Size size = MediaQuery.of(context).size;</span></a>
-<a name="11"><span class="lineNum">      11 </span><span class="lineCov">          1 :     return ConstrainedBox(</span></a>
-<a name="12"><span class="lineNum">      12 </span><span class="lineCov">          1 :       constraints: BoxConstraints(</span></a>
-<a name="13"><span class="lineNum">      13 </span><span class="lineCov">          1 :         minHeight: size.height,</span></a>
-<a name="14"><span class="lineNum">      14 </span><span class="lineCov">          1 :         minWidth: size.width,</span></a>
+<a name="10"><span class="lineNum">      10 </span><span class="lineCov">          4 :     final Size size = MediaQuery.of(context).size;</span></a>
+<a name="11"><span class="lineNum">      11 </span><span class="lineCov">          2 :     return ConstrainedBox(</span></a>
+<a name="12"><span class="lineNum">      12 </span><span class="lineCov">          2 :       constraints: BoxConstraints(</span></a>
+<a name="13"><span class="lineNum">      13 </span><span class="lineCov">          2 :         minHeight: size.height,</span></a>
+<a name="14"><span class="lineNum">      14 </span><span class="lineCov">          2 :         minWidth: size.width,</span></a>
 <a name="15"><span class="lineNum">      15 </span>            :       ),</a>
-<a name="16"><span class="lineNum">      16 </span><span class="lineCov">          1 :       child: Container(</span></a>
+<a name="16"><span class="lineNum">      16 </span><span class="lineCov">          2 :       child: Container(</span></a>
 <a name="17"><span class="lineNum">      17 </span>            :         color: Colors.white,</a>
 <a name="18"><span class="lineNum">      18 </span>            :         padding: const EdgeInsets.all(20),</a>
-<a name="19"><span class="lineNum">      19 </span><span class="lineCov">          1 :         child: Column(</span></a>
+<a name="19"><span class="lineNum">      19 </span><span class="lineCov">          2 :         child: Column(</span></a>
 <a name="20"><span class="lineNum">      20 </span>            :           mainAxisSize: MainAxisSize.max,</a>
-<a name="21"><span class="lineNum">      21 </span><span class="lineCov">          1 :           children: &lt;Widget&gt;[</span></a>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">          2 :           children: &lt;Widget&gt;[</span></a>
 <a name="22"><span class="lineNum">      22 </span>            :             const DefaultSpacer(),</a>
 <a name="23"><span class="lineNum">      23 </span>            :             const CircularProgressIndicator(</a>
 <a name="24"><span class="lineNum">      24 </span>            :               color: CustomColors.premierLeaguePurple,</a>
 <a name="25"><span class="lineNum">      25 </span>            :             ),</a>
 <a name="26"><span class="lineNum">      26 </span>            :             const DefaultSpacer(),</a>
-<a name="27"><span class="lineNum">      27 </span><span class="lineCov">          1 :             Text(</span></a>
+<a name="27"><span class="lineNum">      27 </span><span class="lineCov">          2 :             Text(</span></a>
 <a name="28"><span class="lineNum">      28 </span>            :               'Fetching data...',</a>
-<a name="29"><span class="lineNum">      29 </span><span class="lineCov">          3 :               style: Theme.of(context).textTheme.titleLarge,</span></a>
+<a name="29"><span class="lineNum">      29 </span><span class="lineCov">          6 :               style: Theme.of(context).textTheme.titleLarge,</span></a>
 <a name="30"><span class="lineNum">      30 </span>            :             ),</a>
 <a name="31"><span class="lineNum">      31 </span>            :           ],</a>
 <a name="32"><span class="lineNum">      32 </span>            :         ),</a>
