@@ -18,6 +18,12 @@ class BestTeamView extends ViewModelWidget<HomeScreenViewModel> {
         children: <Widget>[
           Image(
             image: NetworkImage(viewModel.bestTeam?.crest ?? ''),
+            loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+              if (loadingProgress == null) { return child; }
+              return const CircularProgressIndicator(
+                color: CustomColors.premierLeaguePurple,
+              );
+            },
             height: 140,
           ),
           const DefaultSpacer(),
